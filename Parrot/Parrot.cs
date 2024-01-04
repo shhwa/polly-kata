@@ -6,6 +6,7 @@ namespace Parrot
     public class Parrot
     {
         private readonly bool _isNailed;
+        private readonly NorwegianBlueParrot _norwegianBlueParrot;
         private readonly int _numberOfCoconuts;
         private readonly ParrotTypeEnum _type;
         private readonly double _voltage;
@@ -16,6 +17,7 @@ namespace Parrot
             _numberOfCoconuts = numberOfCoconuts;
             _voltage = voltage;
             _isNailed = isNailed;
+            _norwegianBlueParrot = new NorwegianBlueParrot(voltage);
         }
 
         public double GetSpeed()
@@ -60,12 +62,26 @@ namespace Parrot
                     value = "Sqaark!";
                     break;
                 case ParrotTypeEnum.NORWEGIAN_BLUE:
-                    value = _voltage > 0 ? "Bzzzzzz" : "...";
+                    value = _norwegianBlueParrot.GetCry();
                     break;
                 default:
                     throw new ArgumentOutOfRangeException();
             }
             return value;
+        }
+    }
+
+    public class NorwegianBlueParrot
+    {
+        private double _voltage;
+
+        public NorwegianBlueParrot(double voltage)
+        {
+            _voltage = voltage;
+        }
+        public string GetCry()
+        {
+            return _voltage > 0 ? "Bzzzzzz" : "...";
         }
     }
 }
