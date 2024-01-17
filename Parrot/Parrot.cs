@@ -6,13 +6,11 @@ namespace Parrot
     {
         private readonly NorwegianBlueParrot _norwegianBlueParrot;
         private readonly AfricanParrot _africanParrot;
-        private readonly int _numberOfCoconuts;
         private readonly ParrotTypeEnum _type;
 
         public Parrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
         {
             _type = type;
-            _numberOfCoconuts = numberOfCoconuts;
             _norwegianBlueParrot = new NorwegianBlueParrot(voltage, isNailed);
             _africanParrot = new AfricanParrot(numberOfCoconuts);
         }
@@ -62,6 +60,14 @@ namespace Parrot
                     throw new ArgumentOutOfRangeException();
             }
             return value;
+        }
+    }
+
+    public class EuropeanParrot
+    {
+        public EuropeanParrot()
+        {
+            
         }
     }
 }
