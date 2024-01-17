@@ -5,6 +5,7 @@ namespace Parrot
     public class Parrot
     {
         private readonly NorwegianBlueParrot _norwegianBlueParrot;
+        private readonly AfricanParrot _africanParrot;
         private readonly int _numberOfCoconuts;
         private readonly ParrotTypeEnum _type;
 
@@ -13,6 +14,7 @@ namespace Parrot
             _type = type;
             _numberOfCoconuts = numberOfCoconuts;
             _norwegianBlueParrot = new NorwegianBlueParrot(voltage, isNailed);
+            _africanParrot = new AfricanParrot(numberOfCoconuts);
         }
 
         public double GetSpeed()
@@ -22,13 +24,15 @@ namespace Parrot
                 case ParrotTypeEnum.EUROPEAN:
                     return GetBaseSpeed();
                 case ParrotTypeEnum.AFRICAN:
-                    return Math.Max(0, GetBaseSpeed() - GetLoadFactor() * _numberOfCoconuts);
+                    return _africanParrot.GetSpeed();
                 case ParrotTypeEnum.NORWEGIAN_BLUE:
                     return _norwegianBlueParrot.GetSpeed();
                 default:
                     throw new ArgumentOutOfRangeException();
             }
         }
+
+        
 
         private double GetLoadFactor()
         {
