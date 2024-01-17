@@ -1,22 +1,17 @@
 ﻿using System;
-using System.Collections.Generic;
 
 namespace Parrot
 {
     public class Parrot
     {
-        private readonly bool _isNailed;
         private readonly NorwegianBlueParrot _norwegianBlueParrot;
         private readonly int _numberOfCoconuts;
         private readonly ParrotTypeEnum _type;
-        private readonly double _voltage;
 
         public Parrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
         {
             _type = type;
             _numberOfCoconuts = numberOfCoconuts;
-            _voltage = voltage;
-            _isNailed = isNailed;
             _norwegianBlueParrot = new NorwegianBlueParrot(voltage, isNailed);
         }
 
@@ -33,11 +28,6 @@ namespace Parrot
                 default:
                     throw new ArgumentOutOfRangeException();
             }
-        }
-
-        private double GetBaseSpeed(double voltage)
-        {
-            return Math.Min(24.0, voltage * GetBaseSpeed());
         }
 
         private double GetLoadFactor()
