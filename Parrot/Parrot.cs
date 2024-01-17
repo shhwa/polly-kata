@@ -17,7 +17,7 @@ namespace Parrot
             _numberOfCoconuts = numberOfCoconuts;
             _voltage = voltage;
             _isNailed = isNailed;
-            _norwegianBlueParrot = new NorwegianBlueParrot(voltage);
+            _norwegianBlueParrot = new NorwegianBlueParrot(voltage, isNailed);
         }
 
         public double GetSpeed()
@@ -29,7 +29,7 @@ namespace Parrot
                 case ParrotTypeEnum.AFRICAN:
                     return Math.Max(0, GetBaseSpeed() - GetLoadFactor() * _numberOfCoconuts);
                 case ParrotTypeEnum.NORWEGIAN_BLUE:
-                    return _isNailed ? 0 : GetBaseSpeed(_voltage);
+                    return _norwegianBlueParrot.GetSpeed();
                 default:
                     throw new ArgumentOutOfRangeException();
             }
@@ -68,20 +68,6 @@ namespace Parrot
                     throw new ArgumentOutOfRangeException();
             }
             return value;
-        }
-    }
-
-    public class NorwegianBlueParrot
-    {
-        private double _voltage;
-
-        public NorwegianBlueParrot(double voltage)
-        {
-            _voltage = voltage;
-        }
-        public string GetCry()
-        {
-            return _voltage > 0 ? "Bzzzzzz" : "...";
         }
     }
 }
