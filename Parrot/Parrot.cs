@@ -6,6 +6,7 @@ namespace Parrot
     {
         private readonly NorwegianBlueParrot _norwegianBlueParrot;
         private readonly AfricanParrot _africanParrot;
+        private readonly EuropeanParrot _europeanParrot;
         private readonly ParrotTypeEnum _type;
 
         public Parrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
@@ -13,6 +14,7 @@ namespace Parrot
             _type = type;
             _norwegianBlueParrot = new NorwegianBlueParrot(voltage, isNailed);
             _africanParrot = new AfricanParrot(numberOfCoconuts);
+            _europeanParrot = new EuropeanParrot();
         }
 
         public double GetSpeed()
@@ -20,7 +22,7 @@ namespace Parrot
             switch (_type)
             {
                 case ParrotTypeEnum.EUROPEAN:
-                    return GetBaseSpeed();
+                    return _europeanParrot.GetSpeed();
                 case ParrotTypeEnum.AFRICAN:
                     return _africanParrot.GetSpeed();
                 case ParrotTypeEnum.NORWEGIAN_BLUE:
@@ -68,6 +70,10 @@ namespace Parrot
         public EuropeanParrot()
         {
             
+        }
+        public double GetSpeed()
+        {
+            return 12.0;
         }
     }
 }
