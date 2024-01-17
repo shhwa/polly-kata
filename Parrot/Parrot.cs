@@ -32,28 +32,16 @@ namespace Parrot
             }
         }
 
-        
-
-        private double GetLoadFactor()
-        {
-            return 9.0;
-        }
-
-        private double GetBaseSpeed()
-        {
-            return 12.0;
-        }
-
         public string GetCry()
         {
             string value;
             switch (_type)
             {
                 case ParrotTypeEnum.EUROPEAN:
-                    value = "Sqoork!";
+                    value = _europeanParrot.GetCry();
                     break;
                 case ParrotTypeEnum.AFRICAN:
-                    value = "Sqaark!";
+                    value = _africanParrot.GetCry();
                     break;
                 case ParrotTypeEnum.NORWEGIAN_BLUE:
                     value = _norwegianBlueParrot.GetCry();
@@ -62,18 +50,6 @@ namespace Parrot
                     throw new ArgumentOutOfRangeException();
             }
             return value;
-        }
-    }
-
-    public class EuropeanParrot
-    {
-        public EuropeanParrot()
-        {
-            
-        }
-        public double GetSpeed()
-        {
-            return 12.0;
         }
     }
 }

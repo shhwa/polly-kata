@@ -21,4 +21,9 @@ public class AfricanParrot
     {
         return 9.0;
     }
+
+    public string GetCry()
+    {
+        return "Sqaark!";
+    }
 }
