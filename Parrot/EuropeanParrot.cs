@@ -1,6 +1,12 @@
 ﻿namespace Parrot;
 
-public class EuropeanParrot
+public interface IParrot
+{
+    double GetSpeed();
+    string GetCry();
+}
+
+public class EuropeanParrot : IParrot
 {
     public double GetSpeed()
     {

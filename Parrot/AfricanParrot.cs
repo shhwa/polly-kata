@@ -2,7 +2,7 @@
 
 namespace Parrot;
 
-public class AfricanParrot
+public class AfricanParrot : IParrot
 {
     private readonly int _numberOfCoconuts;
     public AfricanParrot(int numberOfCoconuts)

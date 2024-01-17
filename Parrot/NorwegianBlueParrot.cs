@@ -2,7 +2,7 @@
 
 namespace Parrot;
 
-public class NorwegianBlueParrot
+public class NorwegianBlueParrot : IParrot
 {
     private double _voltage;
     private bool _isNailed; 

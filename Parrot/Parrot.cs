@@ -4,52 +4,35 @@ namespace Parrot
 {
     public class Parrot
     {
-        private readonly NorwegianBlueParrot _norwegianBlueParrot;
-        private readonly AfricanParrot _africanParrot;
-        private readonly EuropeanParrot _europeanParrot;
         private readonly ParrotTypeEnum _type;
+        private readonly IParrot _trueParrot;
 
         public Parrot(ParrotTypeEnum type, int numberOfCoconuts, double voltage, bool isNailed)
         {
             _type = type;
-            _norwegianBlueParrot = new NorwegianBlueParrot(voltage, isNailed);
-            _africanParrot = new AfricanParrot(numberOfCoconuts);
-            _europeanParrot = new EuropeanParrot();
+            switch (_type)
+            {
+                case ParrotTypeEnum.EUROPEAN:
+                    _trueParrot = new EuropeanParrot();
+                    break;
+                case ParrotTypeEnum.AFRICAN:
+                    _trueParrot = new AfricanParrot(numberOfCoconuts);
+                    break;
+                case ParrotTypeEnum.NORWEGIAN_BLUE:
+                    _trueParrot = new NorwegianBlueParrot(voltage, isNailed);
+                    break;
+                    
+            }
         }
 
         public double GetSpeed()
         {
-            switch (_type)
-            {
-                case ParrotTypeEnum.EUROPEAN:
-                    return _europeanParrot.GetSpeed();
-                case ParrotTypeEnum.AFRICAN:
-                    return _africanParrot.GetSpeed();
-                case ParrotTypeEnum.NORWEGIAN_BLUE:
-                    return _norwegianBlueParrot.GetSpeed();
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
+            return _trueParrot.GetSpeed();
         }
 
         public string GetCry()
         {
-            string value;
-            switch (_type)
-            {
-                case ParrotTypeEnum.EUROPEAN:
-                    value = _europeanParrot.GetCry();
-                    break;
-                case ParrotTypeEnum.AFRICAN:
-                    value = _africanParrot.GetCry();
-                    break;
-                case ParrotTypeEnum.NORWEGIAN_BLUE:
-                    value = _norwegianBlueParrot.GetCry();
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-            return value;
+            return _trueParrot.GetCry();
         }
     }
 }
