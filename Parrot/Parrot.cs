@@ -15,9 +15,6 @@ namespace Parrot
                 case ParrotTypeEnum.EUROPEAN:
                     _trueParrot = new EuropeanParrot();
                     break;
-                case ParrotTypeEnum.AFRICAN:
-                    _trueParrot = new AfricanParrot(numberOfCoconuts);
-                    break;
             }
         }
 
