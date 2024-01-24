@@ -7,21 +7,21 @@ namespace Parrot.Tests
         [Test]
         public void GetSpeedNorwegianBlueParrot_nailed()
         {
-            var parrot = new Parrot(ParrotTypeEnum.NORWEGIAN_BLUE, 0, 0, true);
+            var parrot = new NorwegianBlueParrot( 0, true);
             Assert.That(0.0, Is.EqualTo(parrot.GetSpeed()));
         }
 
         [Test]
         public void GetSpeedNorwegianBlueParrot_not_nailed()
         {
-            var parrot = new Parrot(ParrotTypeEnum.NORWEGIAN_BLUE, 0, 1.5, false);
+            var parrot = new NorwegianBlueParrot( 1.5, false);
             Assert.That(18.0, Is.EqualTo(parrot.GetSpeed()));
         }
 
         [Test]
         public void GetSpeedNorwegianBlueParrot_not_nailed_high_voltage()
         {
-            var parrot = new Parrot(ParrotTypeEnum.NORWEGIAN_BLUE, 0, 4, false);
+            var parrot = new NorwegianBlueParrot(4, false);
             Assert.That(24.0, Is.EqualTo(parrot.GetSpeed()));
         }
 
@@ -70,14 +70,14 @@ namespace Parrot.Tests
         [Test]
         public void GetCryNorwegianBlueParrot_high_voltage()
         {
-            var parrot = new Parrot(ParrotTypeEnum.NORWEGIAN_BLUE, 0, 4, false);
+            var parrot = new NorwegianBlueParrot(4, false);
             Assert.That("Bzzzzzz", Is.EqualTo(parrot.GetCry()));
         }
         
         [Test]
         public void GetCryNorwegianBlueParrot_no_voltage()
         {
-            var parrot = new Parrot(ParrotTypeEnum.NORWEGIAN_BLUE, 0, 0, false);
+            var parrot = new NorwegianBlueParrot(0, false);
             Assert.That("...", Is.EqualTo(parrot.GetCry()));
         }
     }
