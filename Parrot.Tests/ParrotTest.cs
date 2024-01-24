@@ -49,14 +49,14 @@ namespace Parrot.Tests
         [Test]
         public void GetSpeedOfEuropeanParrot()
         {
-            var parrot = new Parrot(ParrotTypeEnum.EUROPEAN, 0, 0, false);
+            var parrot = new EuropeanParrot();
             Assert.That(12.0, Is.EqualTo(parrot.GetSpeed()));
         }
         
         [Test]
         public void GetCryOfEuropeanParrot()
         {
-            var parrot = new Parrot(ParrotTypeEnum.EUROPEAN, 0, 0, false);
+            var parrot = new EuropeanParrot();
             Assert.That("Sqoork!", Is.EqualTo(parrot.GetCry()));
         }
         
